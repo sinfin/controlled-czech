@@ -22,14 +22,71 @@ func TestAISlopPhrase(t *testing.T) {
 	assertHasRule(t, findings, "CC705")
 }
 
+func TestAISlopPhrasesUseSpecificRuleIDs(t *testing.T) {
+	tests := []struct {
+		text string
+		rule string
+	}{
+		{"V dnešním rychle se měnícím světě je důležité reagovat rychle.", "CC702"},
+		{"Podívejme se nyní podrobněji na jednotlivé oblasti.", "CC704"},
+		{"S ohledem na výše uvedené použijeme PostgreSQL.", "CC705"},
+		{"Na konci dne musíme rozhodnout.", "CC605"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.rule, func(t *testing.T) {
+			findings := Check("doc.md", tt.text, Options{})
+			assertHasRule(t, findings, tt.rule)
+		})
+	}
+}
+
 func TestLikelyMissingActor(t *testing.T) {
 	findings := Check("doc.md", "Po dokončení se vytvoří report.", Options{})
 	assertHasRule(t, findings, "CC201")
 }
 
+func TestPassiveSentenceWithExplicitActorIsNotMissingActor(t *testing.T) {
+	findings := Check("doc.md", "Ticket bude vytvořen systémem.", Options{})
+	assertHasNoRule(t, findings, "CC201")
+}
+
 func TestDiscouragedTerminology(t *testing.T) {
 	findings := Check("doc.md", "Agent načte repo a zkontroluje změny.", Options{})
 	assertHasRule(t, findings, "CC301")
+}
+
+func TestTerminologyFindingsHaveStableOrder(t *testing.T) {
+	want := []string{
+		"Nepreferovaný termín \"repo\"; preferuj \"repozitář\"",
+		"Nepreferovaný termín \"repository\"; preferuj \"repozitář\"",
+	}
+	seen := map[string]bool{}
+
+	for i := 0; i < 200; i++ {
+		findings := Check("doc.md", "Agent načte repo a repository.", Options{})
+		var got []string
+		for _, finding := range findings {
+			if finding.Rule == "CC301" {
+				got = append(got, finding.Message)
+			}
+		}
+		key := strings.Join(got, "|")
+		seen[key] = true
+		if len(got) != len(want) || got[0] != want[0] || got[1] != want[1] {
+			t.Fatalf("nestabilní pořadí terminologie: %#v", got)
+		}
+	}
+
+	if len(seen) != 1 {
+		t.Fatalf("očekáváno jediné pořadí, získáno %d variant: %#v", len(seen), seen)
+	}
+}
+
+func TestLineLongerThanScannerLimitDoesNotTruncateDocument(t *testing.T) {
+	text := strings.Repeat("a", 70_000) + "\nJe důležité poznamenat, že služba běží."
+	findings := Check("doc.md", text, Options{})
+	assertHasRule(t, findings, "CC705")
 }
 
 func TestAdjacentDuplicateSentence(t *testing.T) {
@@ -78,4 +135,13 @@ func assertHasRule(t *testing.T, findings []Finding, rule string) {
 		}
 	}
 	t.Fatalf("pravidlo %s nebylo nalezeno v %#v", rule, findings)
+}
+
+func assertHasNoRule(t *testing.T, findings []Finding, rule string) {
+	t.Helper()
+	for _, finding := range findings {
+		if finding.Rule == rule {
+			t.Fatalf("pravidlo %s nemělo být nalezeno v %#v", rule, findings)
+		}
+	}
 }

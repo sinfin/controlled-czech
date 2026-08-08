@@ -25,3 +25,9 @@ Identifikátor existujícího pravidla se nesmí použít pro jiný význam.
 Nové chování linteru musí mít test, který před implementací selže a po implementaci projde.
 
 Linter má být konzervativní. Je lepší neoznačit obtížně rozpoznatelné porušení než vytvářet dojem jazykového porozumění, které nástroj nemá.
+
+## Strojová pravidla
+
+Každá fráze v `pravidla/ai-slop.txt` používá formát `CCxxx|fráze`. Identifikátor musí odpovídat pravidlu v `SPEC.md`.
+
+Pořadí diagnostik musí být deterministické. Datová struktura založená na Go `map` proto nesmí přímo určovat pořadí výstupu.

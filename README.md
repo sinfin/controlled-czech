@@ -98,6 +98,8 @@ https://github.com/sinfin/controlled-czech
 
 Hotové varianty jsou v [`integrace/`](integrace/).
 
+Tento repozitář používá Controlled Czech také pro vlastní práci AI agentů. Projektové instrukce jsou v kořenovém [`AGENTS.md`](AGENTS.md) a odkazují přímo na lokální `SPEC.md` jako kanonický zdroj pravidel.
+
 ## Specifikace
 
 Kanonický dokument je [`SPEC.md`](SPEC.md). Každé pravidlo má stabilní identifikátor ve tvaru `CCxxx`.
@@ -158,4 +160,4 @@ Projekt vznikl z praktické potřeby psát technické koncepty a dokumentaci tak
 
 ## Licence
 
-Kód linteru je dostupný pod licencí MIT. Specifikace, dokumentace, pravidla, příklady a šablony jsou dostupné pod licencí Creative Commons Attribution 4.0 International (CC BY 4.0). Podrobnosti jsou v souboru [`LICENSE`](LICENSE).
+Kód linteru je dostupný pod licencí MIT. Strojová data v `pravidla/` jsou dostupná pod MIT nebo CC BY 4.0. Specifikace, dokumentace, příklady a šablony jsou dostupné pod licencí Creative Commons Attribution 4.0 International (CC BY 4.0). Podrobnosti jsou v souboru [`LICENSE`](LICENSE).

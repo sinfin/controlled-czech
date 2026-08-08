@@ -8,4 +8,5 @@
 - pravidla proti informačnímu šumu a AI slop,
 - příklady a šablony,
 - integrace pro `AGENTS.md` a system prompt,
+- vlastní kořenový `AGENTS.md`, který aplikuje Controlled Czech na tento repozitář,
 - první deterministický CLI linter.

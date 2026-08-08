@@ -22,7 +22,7 @@ V normativním textu mají následující výrazy stabilní význam:
 | --- | --- |
 | `musí` | závazný požadavek |
 | `nesmí` | závazný zákaz |
-| `měl by` | doporučené chování; odchylka vyžaduje rozumný důvod |
+| `měl by` | doporučené chování; odchylka vyžaduje zdůvodnění |
 | `neměl by` | nedoporučené chování; odchylka může být oprávněná |
 | `může` | povolená možnost |
 
@@ -136,6 +136,11 @@ Doporučení nesmí být zaměnitelné se závazným požadavkem.
 
 Fakt o existujícím systému nesmí být formulován tak, aby vypadal jako budoucí požadavek.
 
+Pokud by mohl být typ informace nejasný, použij označení `Fakt` nebo `Požadavek`.
+
+> **Fakt:** Služba dnes ukládá soubory 30 dní.  
+> **Požadavek:** Služba musí ukládat soubory 90 dní.
+
 ### CC502 — Označ rozhodnutí, pokud by mohlo být zaměněno s návrhem
 
 Doporučený zápis:
@@ -164,6 +169,18 @@ Neuzavřená otázka nesmí vypadat jako rozhodnutí.
 ### CC506 — Pro složitější chování můžeš použít strukturu `Když / Pokud / Akce / Výsledek`
 
 Tato struktura je vhodná zejména pro stavové a integrační scénáře.
+
+### CC507 — Označ omezení, pokud ovlivňuje návrh nebo použití
+
+Omezení popisuje hranici, kterou návrh musí respektovat, ale samo nemusí být požadavkem na chování systému.
+
+> **Omezení:** Služba nesmí vyžadovat přístup k veřejnému internetu.
+
+### CC508 — Příklad označ jako příklad
+
+Příklad vysvětluje pravidlo nebo chování. Nesmí nahrazovat normativní požadavek ani rozhodnutí.
+
+> **Příklad:** Pro soubor o velikosti 10 MB může klient použít upload jedním požadavkem.
 
 ## 8. CC6xx — Nejednoznačnost
 

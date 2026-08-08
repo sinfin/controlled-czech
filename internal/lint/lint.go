@@ -1,11 +1,11 @@
 package lint
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"io"
 	"regexp"
+	"sort"
 	"strings"
 
 	controlledczech "github.com/sinfin/controlled-czech"
@@ -25,6 +25,16 @@ type Finding struct {
 	Text    string `json:"text,omitempty"`
 }
 
+type phraseRule struct {
+	Rule   string
+	Phrase string
+}
+
+type terminologyRule struct {
+	Discouraged string
+	Preferred   string
+}
+
 var (
 	wordRegexp     = regexp.MustCompile(`[\p{L}\p{N}]+`)
 	sentenceRegexp = regexp.MustCompile(`[.!?]+`)
@@ -33,12 +43,11 @@ var (
 
 var vagueTerms = mustLoadLines("pravidla/neurcite-vyrazy.txt")
 
-var aiSlopPhrases = mustLoadLines("pravidla/ai-slop.txt")
+var aiSlopPhrases = mustLoadPhraseRules("pravidla/ai-slop.txt")
 
 var actorlessPhrases = []string{
 	"se vytvoří", "se odešle", "se provede", "se uloží", "se zpracuje",
-	"se nastaví", "se přidá", "se odstraní", "bude vytvořen", "bude vytvořena",
-	"bude odeslán", "bude odeslána",
+	"se nastaví", "se přidá", "se odstraní",
 }
 
 var discouragedTerms = mustLoadTerminology("pravidla/terminologie.json")
@@ -58,7 +67,27 @@ func mustLoadLines(path string) []string {
 	return lines
 }
 
-func mustLoadTerminology(path string) map[string]string {
+func mustLoadPhraseRules(path string) []phraseRule {
+	data, err := controlledczech.Rules.ReadFile(path)
+	if err != nil {
+		panic(err)
+	}
+	var rules []phraseRule
+	for _, line := range strings.Split(string(data), "\n") {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		parts := strings.SplitN(line, "|", 2)
+		if len(parts) != 2 || strings.TrimSpace(parts[0]) == "" || strings.TrimSpace(parts[1]) == "" {
+			panic(fmt.Sprintf("neplatné pravidlo fráze v %s: %q", path, line))
+		}
+		rules = append(rules, phraseRule{Rule: strings.TrimSpace(parts[0]), Phrase: strings.TrimSpace(parts[1])})
+	}
+	return rules
+}
+
+func mustLoadTerminology(path string) []terminologyRule {
 	data, err := controlledczech.Rules.ReadFile(path)
 	if err != nil {
 		panic(err)
@@ -67,12 +96,18 @@ func mustLoadTerminology(path string) map[string]string {
 	if err := json.Unmarshal(data, &source); err != nil {
 		panic(err)
 	}
-	result := make(map[string]string)
+	var result []terminologyRule
 	for preferred, discouraged := range source {
 		for _, term := range discouraged {
-			result[term] = preferred
+			result = append(result, terminologyRule{Discouraged: term, Preferred: preferred})
 		}
 	}
+	sort.Slice(result, func(i, j int) bool {
+		if result[i].Discouraged == result[j].Discouraged {
+			return result[i].Preferred < result[j].Preferred
+		}
+		return result[i].Discouraged < result[j].Discouraged
+	})
 	return result
 }
 
@@ -86,11 +121,8 @@ func Check(file, text string, options Options) []Finding {
 	inFence := false
 	previousSentence := ""
 
-	scanner := bufio.NewScanner(strings.NewReader(text))
-	lineNo := 0
-	for scanner.Scan() {
-		lineNo++
-		raw := scanner.Text()
+	for lineIndex, raw := range strings.Split(text, "\n") {
+		lineNo := lineIndex + 1
 		trimmed := strings.TrimSpace(raw)
 
 		if strings.HasPrefix(trimmed, "```") || strings.HasPrefix(trimmed, "~~~") {
@@ -114,10 +146,10 @@ func Check(file, text string, options Options) []Finding {
 		}
 
 		for _, phrase := range aiSlopPhrases {
-			if containsTerm(lower, phrase) {
+			if containsTerm(lower, phrase.Phrase) {
 				findings = append(findings, Finding{
-					File: file, Line: lineNo, Rule: "CC705",
-					Message: fmt.Sprintf("Metatextová nebo AI-slop fráze: %q", phrase), Text: trimmed,
+					File: file, Line: lineNo, Rule: phrase.Rule,
+					Message: fmt.Sprintf("Metatextová nebo AI-slop fráze: %q", phrase.Phrase), Text: trimmed,
 				})
 			}
 		}
@@ -132,11 +164,11 @@ func Check(file, text string, options Options) []Finding {
 			}
 		}
 
-		for discouraged, preferred := range discouragedTerms {
-			if containsTerm(lower, discouraged) {
+		for _, term := range discouragedTerms {
+			if containsTerm(lower, term.Discouraged) {
 				findings = append(findings, Finding{
 					File: file, Line: lineNo, Rule: "CC301",
-					Message: fmt.Sprintf("Nepreferovaný termín %q; preferuj %q", discouraged, preferred), Text: trimmed,
+					Message: fmt.Sprintf("Nepreferovaný termín %q; preferuj %q", term.Discouraged, term.Preferred), Text: trimmed,
 				})
 			}
 		}

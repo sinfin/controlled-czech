@@ -2,9 +2,9 @@
 
 Controlled Czech používá dvě licence podle typu obsahu.
 
-## Kód — MIT License
+## Kód a strojová pravidla — MIT License
 
-Soubory v `cmd/`, `internal/` a související software jsou dostupné pod MIT License.
+Soubory v `cmd/`, `internal/`, `rules.go` a `pravidla/` a související software jsou dostupné pod MIT License.
 
 Copyright (c) 2026 Sinfin
 
@@ -28,7 +28,9 @@ SOFTWARE.
 
 ## Specifikace a dokumentace — CC BY 4.0
 
-`SPEC.md`, `README.md`, obsah adresářů `pravidla/`, `priklady/`, `sablony/` a `integrace/` a ostatní dokumentace jsou dostupné pod licencí Creative Commons Attribution 4.0 International (CC BY 4.0).
+`SPEC.md`, `README.md`, `AGENTS.md`, obsah adresářů `priklady/`, `sablony/` a `integrace/` a ostatní dokumentace jsou dostupné pod licencí Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+Obsah adresáře `pravidla/` je dostupný také pod CC BY 4.0. Uživatel si pro tyto soubory může zvolit MIT nebo CC BY 4.0.
 
 Text licence: https://creativecommons.org/licenses/by/4.0/legalcode
 
