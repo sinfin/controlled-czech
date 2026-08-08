@@ -78,27 +78,32 @@ Používejte ho pro technický obsah, ne automaticky pro všechnu firemní komun
 
 ## Použití s AI agenty
 
-Nejjednodušší integrace je odkaz na specifikaci a několik nejdůležitějších pravidel v `AGENTS.md`.
+Doporučená integrace je **skill**, ne kopie celé specifikace do `AGENTS.md`. Trvalé instrukce mají být krátké. Detailní pravidla se mají načíst jen při práci s českým technickým textem.
+
+### Agent se skills
+
+Repo obsahuje hotový skill v [`.agents/skills/controlled-czech/SKILL.md`](.agents/skills/controlled-czech/SKILL.md).
+
+Pro Codex stačí zkopírovat adresář `.agents/skills/controlled-czech/` do projektu. Codex repo-local skills automaticky objeví. Do počátečního kontextu načte pouze název a popis skillu; celý `SKILL.md` načte až při použití. Viz [dokumentace Codex Skills](https://developers.openai.com/codex/skills/).
+
+Pokud agent skills objevuje automaticky, pravidla není nutné duplikovat v `AGENTS.md`. Pro explicitní trigger stačí jedna věta:
 
 ```markdown
-### Česká technická dokumentace
-
-Při psaní české technické dokumentace dodržuj Controlled Czech:
-https://github.com/sinfin/controlled-czech
-
-- Jedna věta má vyjadřovat jednu hlavní myšlenku.
-- Preferuj krátké věty a explicitního aktéra.
-- Neopakuj stejnou informaci jinými slovy.
-- Odstraň úvody, závěry a přechodové fráze, které nepřidávají informaci.
-- Nepoužívej anglické idiomy doslovně přeložené do češtiny.
-- Rozlišuj fakt, požadavek, rozhodnutí, předpoklad a otevřenou otázku.
-- Pro normativní požadavky používej `musí`, `nesmí`, `měl by`, `neměl by` a `může`.
-- Pokud lze informaci vyjádřit hodnotou, tabulkou nebo krátkým seznamem, neobaluj ji zbytečnou prózou.
+Při psaní českých technických textů použij skill `controlled-czech`.
 ```
 
-Hotové varianty jsou v [`integrace/`](integrace/).
+### Agent bez podpory skills
 
-Tento repozitář používá Controlled Czech také pro vlastní práci AI agentů. Projektové instrukce jsou v kořenovém [`AGENTS.md`](AGENTS.md) a odkazují přímo na lokální `SPEC.md` jako kanonický zdroj pravidel.
+Použijte krátký fallback:
+
+```markdown
+Při psaní českých technických textů dodržuj Controlled Czech: https://github.com/sinfin/controlled-czech.
+Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hlavní myšlenku. Neopakuj informace. Používej explicitního aktéra, konzistentní terminologii a normativní slovesa `musí`, `nesmí`, `měl by`, `neměl by`, `může`. Při nejasnosti použij relevantní pravidlo `CCxxx` ze specifikace.
+```
+
+Další hotové varianty jsou v [`integrace/`](integrace/).
+
+Tento repozitář používá stejný princip pro vlastní práci AI agentů: kořenový [`AGENTS.md`](AGENTS.md) obsahuje jen trvalé projektové podmínky a odkaz na repo-local skill.
 
 ## Specifikace
 
