@@ -8,7 +8,7 @@ Roadmap není závazný harmonogram. `SPEC.md` zůstává jediným kanonickým z
 
 ### Projektová konfigurace
 
-Umožnit projektu rozšířit Controlled Czech bez forku standardu.
+Umožnit projektu rozšířit Controlled Czech bez forku specifikace.
 
 Konfigurace by měla podporovat zejména:
 
