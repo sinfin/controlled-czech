@@ -17,6 +17,11 @@ func TestVagueExpression(t *testing.T) {
 	assertHasRule(t, findings, "CC603")
 }
 
+func TestMeasuredComparisonIsNotVague(t *testing.T) {
+	findings := Check("doc.md", "Systém nesmí přijmout soubor větší než 20 MB. Soubor menší než 1 MB může zpracovat synchronně.", Options{})
+	assertHasNoRule(t, findings, "CC603")
+}
+
 func TestAISlopPhrase(t *testing.T) {
 	findings := Check("doc.md", "Je důležité poznamenat, že služba používá PostgreSQL.", Options{})
 	assertHasRule(t, findings, "CC705")
