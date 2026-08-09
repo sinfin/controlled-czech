@@ -1,0 +1,13 @@
+CC705|je důležité poznamenat
+CC705|za zmínku stojí
+CC704|pojďme se podívat
+CC704|pojďme se ponořit
+CC702|v dnešní době
+CC702|v dnešním rychle se měnícím
+CC705|v konečném důsledku
+CC605|na konci dne
+CC705|s ohledem na výše uvedené
+CC705|nelze opomenout
+CC704|podívejme se nyní
+CC705|pokud jde o
+CC705|v tomto kontextu
