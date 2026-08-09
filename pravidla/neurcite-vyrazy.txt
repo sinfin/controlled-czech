@@ -13,5 +13,3 @@ standardní
 běžný
 časem
 poměrně
-větší
-menší
