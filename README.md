@@ -98,7 +98,7 @@ Použijte krátký fallback:
 
 ```markdown
 Při psaní českých technických textů dodržuj Controlled Czech: https://github.com/sinfin/controlled-czech.
-Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hlavní myšlenku. Neopakuj informace. Používej explicitního aktéra, konzistentní terminologii a normativní slovesa `musí`, `nesmí`, `měl by`, `neměl by`, `může`. Při nejasnosti použij relevantní pravidlo `CCxxx` ze specifikace.
+Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hlavní myšlenku. Neopakuj informace. Používej explicitního aktéra, konzistentní terminologii a normativní slovesa `musí`, `nesmí`, `měl by`, `neměl by`, `může`. Při nejasnosti použij příslušné pravidlo `CCxxx` ze specifikace.
 ```
 
 Další hotové varianty jsou v [`integrace/`](integrace/).
@@ -146,6 +146,10 @@ Po vydání tagované verze bude možné použít také:
 ```bash
 go install github.com/sinfin/controlled-czech/cmd/controlled-czech@latest
 ```
+
+## Roadmap
+
+Části původního konceptu, které záměrně nejsou v 0.1, jsou v [`ROADMAP.md`](ROADMAP.md). Patří mezi ně projektová konfigurace, přesnější Markdown lint, editor/LSP, distribuce, evaly a volitelná sémantická kontrola.
 
 ## Inspirace
 
