@@ -49,6 +49,18 @@ Možné oblasti:
 
 Linter nesmí předstírat jazykové porozumění, které nemá.
 
+### Úplnost tvrzení a postupů
+
+Původní koncept používá kontrolní otázky `Kdo? / Co? / Kdy? / Za jakých podmínek?`.
+
+Budoucí sémantická kontrola může upozornit, pokud technické tvrzení nebo krok postupu postrádá údaj důležitý pro provedení nebo odpovědnost. Kontrola nesmí vyžadovat všechny čtyři údaje tam, kde nejsou pro význam potřebné.
+
+### Procedurální text
+
+Upřesnit rozdíl mezi normativním požadavkem a přímým pracovním pokynem.
+
+Například `Systém musí uložit záznam.` je požadavek na systém, zatímco `Spusť migraci.` je krok postupu. Controlled Czech má podporovat oba typy textu bez nucení imperativu do normativního slovníku `musí / nesmí / může`.
+
 ## Distribuce a integrace
 
 ### Binární vydání
@@ -62,6 +74,12 @@ Zvážit:
 - jednoduchou instalaci pro Linux a Windows,
 - oficiální GitHub Action,
 - pre-commit integraci.
+
+### Editor a LSP
+
+Po stabilizaci diagnostik zvážit editorovou integraci, která zobrazí `CCxxx` přímo u textu.
+
+Preferovat společné LSP nebo jinou editorově neutrální vrstvu před samostatnou implementací stejné logiky pro každý editor. VS Code rozšíření může být tenký klient nad touto vrstvou.
 
 ### Skill jako instalovatelný balíček
 
@@ -84,7 +102,8 @@ Kandidáti:
 - skrytá podmínka,
 - nejasný antecedent,
 - doporučení schované za dlouhou argumentací,
-- kontrola struktury `Když / Pokud / Akce / Výsledek`.
+- kontrola struktury `Když / Pokud / Akce / Výsledek`,
+- kontrola úplnosti `Kdo? / Co? / Kdy? / Za jakých podmínek?` podle kontextu.
 
 Sémantická kontrola musí u každého nálezu uvést odpovídající `CCxxx`. Nesmí tiše měnit text.
 
