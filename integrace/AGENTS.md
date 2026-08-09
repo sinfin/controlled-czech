@@ -20,5 +20,5 @@ Použijte krátký fallback:
 
 ```markdown
 Při psaní českých technických textů dodržuj Controlled Czech: https://github.com/sinfin/controlled-czech.
-Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hlavní myšlenku. Neopakuj informace. Používej explicitního aktéra, konzistentní terminologii a normativní slovesa `musí`, `nesmí`, `měl by`, `neměl by`, `může`. Při nejasnosti použij relevantní pravidlo `CCxxx` ze specifikace.
+Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hlavní myšlenku. Neopakuj informace. Používej explicitního aktéra, konzistentní terminologii a normativní slovesa `musí`, `nesmí`, `měl by`, `neměl by`, `může`. Při nejasnosti použij příslušné pravidlo `CCxxx` ze specifikace.
 ```
