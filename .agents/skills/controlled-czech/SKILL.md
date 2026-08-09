@@ -18,4 +18,4 @@ Cíl: maximum informace při minimálním čtecím úsilí.
 9. Rozlišuj fakt, požadavek, rozhodnutí, důvod, předpoklad, omezení, otevřenou otázku a příklad.
 10. Požadavky formuluj pomocí `musí`, `nesmí`, `měl by`, `neměl by` a `může`.
 
-Pokud je v projektu dostupný Controlled Czech `SPEC.md`, je kanonický. Při nejasnosti načti jen relevantní pravidlo `CCxxx`, ne celou specifikaci.
+Pokud je v projektu dostupný Controlled Czech `SPEC.md`, je kanonický. Při nejasnosti načti jen příslušné pravidlo `CCxxx`, ne celou specifikaci.
