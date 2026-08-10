@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="base.css">
+<style>
+body { background: #F5F5F5; flex-direction: column; padding: 72px; align-items: stretch; justify-content: center; }
+.head { font-weight: 500; font-size: 27px; color: #6F7172; margin-bottom: 26px; }
+.term { background: #000; border-radius: 18px; padding: 40px 44px; font-family: Menlo, monospace; font-size: 20px; line-height: 1.6; color: #E8E8E8; }
+.prompt { color: #6F7172; } .cmd { color: #fff; } .loc { color: #4C84FD; } .rule { color: #FF9A52; }
+.ctx { color: #6F7172; } .sum { color: #F1CA45; } .row { white-space: nowrap; }
+</style>
+<div class="head">controlled-czech check — deterministická kontrola, offline, bez LLM</div>
+<div class="term">
+<div class="row"><span class="prompt">$ </span><span class="cmd">controlled-czech check dokumentace/nasazeni.md</span></div>
+<div class="row">&nbsp;</div>
+<div class="row"><span class="loc">nasazeni.md:3</span>  <span class="rule">CC603</span>  <span class="msg">Neurčitý výraz: &quot;relevantní&quot;</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;PostgreSQL představuje velmi relevantní možnost.</span></div>
+<div class="row"><span class="loc">nasazeni.md:3</span>  <span class="rule">CC705</span>  <span class="msg">Metatextová nebo AI-slop fráze: &quot;je důležité poznamenat&quot;</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;Je důležité poznamenat, že v dnešním rychle se měnícím prostředí…</span></div>
+<div class="row"><span class="loc">nasazeni.md:3</span>  <span class="rule">CC702</span>  <span class="msg">Metatextová nebo AI-slop fráze: &quot;v dnešním rychle se měnícím&quot;</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;…existuje několik faktorů, které je potřeba zvážit.</span></div>
+<div class="row"><span class="loc">nasazeni.md:3</span>  <span class="rule">CC705</span>  <span class="msg">Metatextová nebo AI-slop fráze: &quot;pokud jde o&quot;</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;Pokud jde o databázi, PostgreSQL představuje…</span></div>
+<div class="row"><span class="loc">nasazeni.md:5</span>  <span class="rule">CC603</span>  <span class="msg">Neurčitý výraz: &quot;ideálně&quot;</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;V rámci nasazení nové verze bychom měli ideálně zajistit…</span></div>
+<div class="row"><span class="loc">nasazeni.md:5</span>  <span class="rule">CC102</span>  <span class="msg">Dlouhá věta: 28 slov (doporučené maximum 25)</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;…aby se migrace provedla až poté, co budou dokončeny všechny úlohy</span></div>
+<div class="row"><span class="loc">nasazeni.md:7</span>  <span class="rule">CC201</span>  <span class="msg">Pravděpodobně chybí explicitní aktér</span></div>
+<div class="row"><span class="ctx">&nbsp;&nbsp;Po dokončení se vytvoří report a odešle se administrátorovi.</span></div>
+<div class="row">&nbsp;</div>
+<div class="row"><span class="sum">7 varování</span></div>
+</div>

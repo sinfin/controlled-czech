@@ -5,7 +5,8 @@
 - distribuce jako plugin pro Claude Code: `.claude-plugin/plugin.json` a marketplace `.claude-plugin/marketplace.json`,
 - distribuce jako plugin pro Codex a ChatGPT: `.codex-plugin/plugin.json` a katalog `.agents/plugins/marketplace.json`,
 - oba manifesty načítají skill z `.agents/skills/`, takže skill nemá duplikát,
-- postup instalace pluginu v `README.md`.
+- postup instalace pluginu v `README.md`,
+- assety značky v `assets/`: ikona `[CC]`, wordmark, OG obrázek a dva screenshoty; zdrojové HTML v `assets/zdroje/`.
 
 ## 0.1.1 — Draft
 

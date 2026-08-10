@@ -24,6 +24,12 @@
     "developerName": "Sinfin",
     "category": "Productivity",
     "brandColor": "#000000",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo-dark.png",
+    "screenshots": [
+      "./assets/screenshot-pred-a-po.png",
+      "./assets/screenshot-linter.png"
+    ],
     "defaultPrompt": [
       "Přepiš tento koncept podle Controlled Czech a vysvětli, která pravidla CCxxx jsi použil.",
       "Zkontroluj tuto českou technickou dokumentaci podle Controlled Czech a navrhni konkrétní úpravy.",

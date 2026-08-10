@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "ModernGothic";
+  src: url("./fonts/ModernGothic-Bold.woff2") format("woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "ModernGothic";
+  src: url("./fonts/ModernGothic-Regular.woff2") format("woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "ModernGothic";
+  src: url("./fonts/ModernGothic-Medium.woff2") format("woff2");
+  font-weight: 500;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; }
+body {
+  font-family: "ModernGothic", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.mark { font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+.bracket { opacity: 0.45; }
