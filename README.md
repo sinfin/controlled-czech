@@ -84,7 +84,13 @@ Doporučená integrace je **skill**, ne kopie celé specifikace do `AGENTS.md`. 
 
 Repo obsahuje hotový skill v [`.agents/skills/controlled-czech/SKILL.md`](.agents/skills/controlled-czech/SKILL.md).
 
-Pro Codex stačí zkopírovat adresář `.agents/skills/controlled-czech/` do projektu. Codex repo-local skills automaticky objeví. Do počátečního kontextu načte pouze název a popis skillu; celý `SKILL.md` načte až při použití. Viz [dokumentace Codex Skills](https://developers.openai.com/codex/skills/).
+**Codex:** zkopírujte adresář `.agents/skills/controlled-czech/` do projektu. Codex repo-local skills automaticky objeví. Do počátečního kontextu načte pouze název a popis skillu; celý `SKILL.md` načte až při použití. Viz [dokumentace Codex Skills](https://developers.openai.com/codex/skills/).
+
+**Claude Code:** zkopírujte stejný adresář do projektového `.claude/skills/controlled-czech/`, nebo do uživatelského `~/.claude/skills/controlled-czech/`. Claude Code adresář `.agents/skills/` nenačítá. Viz [dokumentace Claude Code Skills](https://code.claude.com/docs/en/skills).
+
+Claude Code standardně nečte `AGENTS.md`. Pokud projekt používá `AGENTS.md`, vytvořte `CLAUDE.md` s řádkem `@AGENTS.md`.
+
+Tento repozitář udržuje skill v `.agents/skills/` a pro Claude Code jej zpřístupňuje symlinkem `.claude/skills/controlled-czech`.
 
 Pokud agent skills objevuje automaticky, pravidla není nutné duplikovat v `AGENTS.md`. Pro explicitní trigger stačí jedna věta:
 
@@ -103,7 +109,7 @@ Preferuj informační hustotu před stylem. Jedna věta má vyjadřovat jednu hl
 
 Další hotové varianty jsou v [`integrace/`](integrace/).
 
-Tento repozitář používá stejný princip pro vlastní práci AI agentů: kořenový [`AGENTS.md`](AGENTS.md) obsahuje jen trvalé projektové podmínky a odkaz na repo-local skill.
+Tento repozitář používá stejný princip pro vlastní práci AI agentů: kořenový [`AGENTS.md`](AGENTS.md) obsahuje jen trvalé projektové podmínky a odkaz na repo-local skill. [`CLAUDE.md`](CLAUDE.md) stejné instrukce importuje pro Claude Code.
 
 ## Specifikace
 
