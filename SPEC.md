@@ -84,6 +84,14 @@ Aktivní rod obvykle lépe ukazuje odpovědnost za akci.
 
 Preferuj `uloží`, `odešle`, `vytvoří`, `zastaví` před obecnými konstrukcemi typu `provede zpracování` nebo `zajistí realizaci`.
 
+### CC204 — Preferuj `je` před opisem slovesa být
+
+Konstrukce `představuje`, `slouží jako` nebo `funguje jako` by neměly nahrazovat prosté `je`, pokud opis nepřidává význam. Opis je oprávněný, pokud vyjadřuje roli nebo funkci, ne prostou identitu.
+
+**Nevhodné:** `Linter představuje nástroj pro kontrolu textu.`
+
+**Vhodné:** `Linter je nástroj pro kontrolu textu.`
+
 ## 5. CC3xx — Terminologie
 
 ### CC301 — Jeden pojem má jeden preferovaný název
@@ -282,6 +290,7 @@ Může spolehlivě nebo užitečně heuristicky kontrolovat zejména:
 
 - CC102 — příliš dlouhé věty,
 - CC201 — vybrané neosobní konstrukce s pravděpodobně chybějícím aktérem,
+- CC204 — známé opisy slovesa být,
 - CC301 — známé nepreferované termíny,
 - CC603 — známé vágní výrazy,
 - CC701 — bezprostředně duplicitní věty,

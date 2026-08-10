@@ -2,6 +2,8 @@
 
 ## 0.1.2 — Draft
 
+- nové pravidlo CC204: preferuj `je` před opisem slovesa být (`představuje`, `slouží jako`, `funguje jako`),
+- linter kontroluje CC204 podle seznamu `pravidla/opisy-slovesa-byt.txt`,
 - distribuce jako plugin pro Claude Code: `.claude-plugin/plugin.json` a marketplace `.claude-plugin/marketplace.json`,
 - distribuce jako plugin pro Codex a ChatGPT: `.codex-plugin/plugin.json` a katalog `.agents/plugins/marketplace.json`,
 - oba manifesty načítají skill z `.agents/skills/`, takže skill nemá duplikát,
