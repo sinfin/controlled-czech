@@ -45,6 +45,8 @@ var vagueTerms = mustLoadLines("pravidla/neurcite-vyrazy.txt")
 
 var aiSlopPhrases = mustLoadPhraseRules("pravidla/ai-slop.txt")
 
+var copulaParaphrases = mustLoadLines("pravidla/opisy-slovesa-byt.txt")
+
 var actorlessPhrases = []string{
 	"se vytvoří", "se odešle", "se provede", "se uloží", "se zpracuje",
 	"se nastaví", "se přidá", "se odstraní",
@@ -150,6 +152,15 @@ func Check(file, text string, options Options) []Finding {
 				findings = append(findings, Finding{
 					File: file, Line: lineNo, Rule: phrase.Rule,
 					Message: fmt.Sprintf("Metatextová nebo AI-slop fráze: %q", phrase.Phrase), Text: trimmed,
+				})
+			}
+		}
+
+		for _, phrase := range copulaParaphrases {
+			if containsTerm(lower, phrase) {
+				findings = append(findings, Finding{
+					File: file, Line: lineNo, Rule: "CC204",
+					Message: fmt.Sprintf("Opis slovesa být: %q; pokud opis nepřidává význam, použij prosté „je“", phrase), Text: trimmed,
 				})
 			}
 		}

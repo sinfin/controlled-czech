@@ -1,5 +1,10 @@
 # Changelog
 
+## Nevydáno
+
+- nové pravidlo CC204: preferuj `je` před opisem slovesa být (`představuje`, `slouží jako`, `funguje jako`),
+- linter kontroluje CC204 podle seznamu `pravidla/opisy-slovesa-byt.txt`.
+
 ## 0.1.1 — Draft
 
 - oprava YAML frontmatteru skillu; neuvozený `description` s dvojtečkou nešel načíst striktním YAML parserem,
