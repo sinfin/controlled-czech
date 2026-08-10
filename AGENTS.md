@@ -8,6 +8,12 @@ Linter v řadě 0.1 musí zůstat deterministický, offline a bez LLM. Nové cho
 
 Do veřejného obsahu nepřidávej interní názvy, procesy ani příklady Sinfinu. Sinfin může být uveden jako iniciátor a správce projektu.
 
+Skill je uložen jen v `.agents/skills/controlled-czech/`. Manifesty pluginů na něj odkazují polem `skills`. Skill nikdy needituj na dvou místech.
+
+Při vydání verze aktualizuj `version` v `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` a `.codex-plugin/plugin.json`. Uživatelé Claude Code dostanou aktualizaci pluginu jen při změně `version`.
+
+Po změně manifestů nebo skillu spusť `claude plugin validate .`.
+
 Před dokončením změny spusť:
 
 ```bash

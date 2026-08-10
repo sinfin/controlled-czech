@@ -1,0 +1,24 @@
+{
+  "name": "sinfin",
+  "description": "Pluginy Sinfinu pro AI agenty. Zatím obsahuje Controlled Czech: pravidla pro srozumitelnou technickou češtinu.",
+  "owner": {
+    "name": "Sinfin",
+    "url": "https://sinfin.digital/"
+  },
+  "plugins": [
+    {
+      "name": "controlled-czech",
+      "source": "./",
+      "description": "Pravidla Controlled Czech pro srozumitelnou, jednoznačnou a informačně hustou technickou češtinu.",
+      "version": "0.1.2",
+      "category": "productivity",
+      "tags": ["czech", "technical-writing", "documentation"],
+      "author": {
+        "name": "Sinfin",
+        "url": "https://sinfin.digital/"
+      },
+      "homepage": "https://github.com/sinfin/controlled-czech",
+      "license": "MIT AND CC-BY-4.0"
+    }
+  ]
+}

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 — Draft
+
+- distribuce jako plugin pro Claude Code: `.claude-plugin/plugin.json` a marketplace `.claude-plugin/marketplace.json`,
+- distribuce jako plugin pro Codex a ChatGPT: `.codex-plugin/plugin.json` a katalog `.agents/plugins/marketplace.json`,
+- oba manifesty načítají skill z `.agents/skills/`, takže skill nemá duplikát,
+- postup instalace pluginu v `README.md`.
+
 ## 0.1.1 — Draft
 
 - oprava YAML frontmatteru skillu; neuvozený `description` s dvojtečkou nešel načíst striktním YAML parserem,

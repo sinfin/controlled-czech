@@ -80,6 +80,44 @@ Používejte ho pro technický obsah, ne automaticky pro všechnu firemní komun
 
 Doporučená integrace je **skill**, ne kopie celé specifikace do `AGENTS.md`. Trvalé instrukce mají být krátké. Detailní pravidla se mají načíst jen při práci s českým technickým textem.
 
+Nejrychlejší cesta je instalace pluginu. Kopírování skillu je fallback pro agenty bez podpory pluginů.
+
+### Plugin pro Claude Code
+
+Repozitář je současně plugin i marketplace. Instalace:
+
+```shell
+/plugin marketplace add sinfin/controlled-czech
+/plugin install controlled-czech@sinfin
+```
+
+Po instalaci je skill dostupný jako `/controlled-czech:controlled-czech` a Claude jej může použít sám podle popisu. Aktualizace: `/plugin marketplace update sinfin`.
+
+### Plugin pro Codex
+
+Přidejte plugin do osobního katalogu v `~/.agents/plugins/marketplace.json`:
+
+```json
+{
+  "name": "sinfin",
+  "plugins": [
+    {
+      "name": "controlled-czech",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/sinfin/controlled-czech.git",
+        "path": "./",
+        "ref": "main"
+      },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "Productivity"
+    }
+  ]
+}
+```
+
+Potom plugin nainstalujte příkazem `/plugins` v Codexu. Pokud repozitář klonujete, Codex najde plugin také v katalogu `.agents/plugins/marketplace.json` uvnitř repozitáře.
+
 ### Agent se skills
 
 Repo obsahuje hotový skill v [`.agents/skills/controlled-czech/SKILL.md`](.agents/skills/controlled-czech/SKILL.md).
