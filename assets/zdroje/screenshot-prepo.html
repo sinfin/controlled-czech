@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="base.css">
+<style>
+body { background: #fff; flex-direction: column; padding: 72px; align-items: stretch; justify-content: center; }
+.col { justify-content: flex-start; }
+.mark { font-size: 42px; color: #000; margin-bottom: 48px; }
+.cols { display: flex; gap: 40px; }
+.col { flex: 1; display: flex; flex-direction: column; }
+.label { font-weight: 500; font-size: 24px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 18px; }
+.before .label { color: #F0655D; }
+.after .label { color: #219D61; }
+.box { border-radius: 16px; padding: 36px; font-weight: 400; font-size: 27px; line-height: 1.5; }
+.before .box { background: #F5F5F5; color: #3B4548; }
+.after .box { background: #000; color: #fff; }
+.meta { margin-top: 20px; font-weight: 500; font-size: 21px; color: #6F7172; }
+</style>
+<div class="mark"><span class="bracket">[</span>Controlled Czech<span class="bracket">]</span></div>
+<div class="cols">
+  <div class="col before">
+    <div class="label">Před</div>
+    <div class="box">V rámci nasazení nové verze bychom měli ideálně zajistit, aby se migrace provedla až poté, co budou dokončeny všechny běžící úlohy, protože jinak může dojít k nekonzistenci dat.</div>
+    <div class="meta">1 věta, 28 slov, neurčité „ideálně“</div>
+  </div>
+  <div class="col after">
+    <div class="label">Po</div>
+    <div class="box">Před nasazením dokončete všechny běžící úlohy. Potom spusťte migraci. Pokud migraci spustíte dříve, data mohou být nekonzistentní.</div>
+    <div class="meta">3 věty, explicitní pořadí kroků, stejná informace</div>
+  </div>
+</div>

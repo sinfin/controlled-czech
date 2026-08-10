@@ -1,0 +1,21 @@
+{
+  "name": "controlled-czech",
+  "displayName": "Controlled Czech",
+  "version": "0.1.2",
+  "description": "Pravidla Controlled Czech pro srozumitelnou, jednoznačnou a informačně hustou technickou češtinu. Použij při psaní, úpravě nebo revizi české dokumentace, specifikací, ADR, issue, PR popisů a runbooků.",
+  "author": {
+    "name": "Sinfin",
+    "url": "https://sinfin.digital/"
+  },
+  "homepage": "https://github.com/sinfin/controlled-czech",
+  "repository": "https://github.com/sinfin/controlled-czech",
+  "license": "MIT AND CC-BY-4.0",
+  "keywords": [
+    "czech",
+    "technical-writing",
+    "controlled-language",
+    "documentation",
+    "style-guide"
+  ],
+  "skills": "./.agents/skills/"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "controlled-czech",
+  "version": "0.1.2",
+  "description": "Pravidla Controlled Czech pro srozumitelnou, jednoznačnou a informačně hustou technickou češtinu.",
+  "author": {
+    "name": "Sinfin",
+    "url": "https://sinfin.digital/"
+  },
+  "homepage": "https://github.com/sinfin/controlled-czech",
+  "repository": "https://github.com/sinfin/controlled-czech",
+  "license": "MIT AND CC-BY-4.0",
+  "keywords": [
+    "czech",
+    "technical-writing",
+    "controlled-language",
+    "documentation",
+    "style-guide"
+  ],
+  "skills": "./.agents/skills/",
+  "interface": {
+    "displayName": "Controlled Czech",
+    "shortDescription": "Rules for clear, unambiguous, information-dense technical Czech.",
+    "longDescription": "Controlled Czech is an open specification for Czech technical writing that prioritises information density over style. The skill applies the rules when you write, edit or review Czech documentation, specifications, ADRs, issues, pull request descriptions, runbooks and agent instructions. Each rule has a stable identifier (CCxxx) in the canonical specification, so the agent can load a single rule instead of the whole document. Not intended for marketing, fiction, personal communication or brand voice.",
+    "developerName": "Sinfin",
+    "category": "Productivity",
+    "brandColor": "#000000",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo-dark.png",
+    "screenshots": [
+      "./assets/screenshot-pred-a-po.png",
+      "./assets/screenshot-linter.png"
+    ],
+    "defaultPrompt": [
+      "Přepiš tento koncept podle Controlled Czech a vysvětli, která pravidla CCxxx jsi použil.",
+      "Zkontroluj tuto českou technickou dokumentaci podle Controlled Czech a navrhni konkrétní úpravy.",
+      "Napiš ADR v Controlled Czech: rozhodnutí, důvody, důsledky, alternativy."
+    ]
+  }
+}
