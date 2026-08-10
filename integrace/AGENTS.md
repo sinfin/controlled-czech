@@ -6,7 +6,12 @@ Do `AGENTS.md` nekopírujte celou specifikaci, pokud agent podporuje skills. Dlo
 
 Nainstalujte skill z [`.agents/skills/controlled-czech/`](../.agents/skills/controlled-czech/) do umístění, ze kterého váš agent načítá skills.
 
-Pro Codex lze adresář vložit přímo do projektového `.agents/skills/`. Skill se může aktivovat podle svého popisu bez kopírování pravidel do `AGENTS.md`.
+- **Codex** načítá projektové skills z `.agents/skills/`.
+- **Claude Code** načítá projektové skills z `.claude/skills/` a uživatelské z `~/.claude/skills/`. Adresář `.agents/skills/` nenačítá.
+
+Skill se může aktivovat podle svého popisu bez kopírování pravidel do `AGENTS.md`.
+
+Claude Code standardně nečte `AGENTS.md`. Pokud projekt používá `AGENTS.md`, vytvořte `CLAUDE.md` s řádkem `@AGENTS.md`.
 
 Pokud chcete explicitní trigger, stačí:
 
