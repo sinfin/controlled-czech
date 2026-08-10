@@ -46,6 +46,25 @@ func TestAISlopPhrasesUseSpecificRuleIDs(t *testing.T) {
 	}
 }
 
+func TestCopulaParaphrase(t *testing.T) {
+	tests := []string{
+		"Linter představuje nástroj pro kontrolu textu.",
+		"Pravidla CCxxx představují jádro specifikace.",
+		"Fronta slouží jako vyrovnávací paměť.",
+		"Adaptér funguje jako překladová vrstva.",
+	}
+
+	for _, text := range tests {
+		findings := Check("doc.md", text, Options{})
+		assertHasRule(t, findings, "CC204")
+	}
+}
+
+func TestPlainCopulaIsNotFlagged(t *testing.T) {
+	findings := Check("doc.md", "Linter je nástroj pro kontrolu textu.", Options{})
+	assertHasNoRule(t, findings, "CC204")
+}
+
 func TestLikelyMissingActor(t *testing.T) {
 	findings := Check("doc.md", "Po dokončení se vytvoří report.", Options{})
 	assertHasRule(t, findings, "CC201")
